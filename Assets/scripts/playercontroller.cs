@@ -18,6 +18,8 @@ public class playercontroller : MonoBehaviour
     Vector3  y;
     Vector3 playerposition;
 
+    float px,py,pz;
+
     private bool flag;
     
     // Start is called before the first frame update
@@ -39,11 +41,14 @@ public class playercontroller : MonoBehaviour
         var moveHorizontal = Input.GetAxis("Horizontal");
         var moveVertical = Input.GetAxis("Vertical");
         var movement = new Vector3(moveHorizontal, 0, moveVertical);
+        Vector3 tmpPosition=player.transform.position;
         rb.AddForce(movement * speed * Time.deltaTime);
         if (player.transform.position.y <= 0)
         {
-            playerposition.y= 1.0f;
+            tmpPosition.y = 1.0f;
         }
+        player.transform.position=new Vector3(player.transform.position.x,tmpPosition.y,player.transform.position.z);
+
         //var ‚ÍŒ^„˜_@‰E•Ó‚©‚çŒ^‚ðŽ©“®‚Å„‘ª‚µ‚Ä‚­‚ê‚é
 
         scoretext.text="Count:"+score.ToString();
