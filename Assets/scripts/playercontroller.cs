@@ -17,8 +17,13 @@ public class playercontroller : MonoBehaviour
     Vector3 StartPositon;
     Vector3  y;
     Vector3 playerposition;
+    Vector3 forwardDir;
+    Vector3 rightDir;
 
-    float px,py,pz;
+    [SerializeField]
+    Camera mainCamera;
+
+    private string str="q";
 
     private bool flag;
     
@@ -32,7 +37,10 @@ public class playercontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!flag)
+        Debug.Log(str);
+        Key();
+        
+        if (!flag)
         {
             player.transform.position = WallManager.startpositon();
             playerposition = player.transform.position;
@@ -42,7 +50,20 @@ public class playercontroller : MonoBehaviour
         var moveVertical = Input.GetAxis("Vertical");
         var movement = new Vector3(moveHorizontal, 0, moveVertical);
         Vector3 tmpPosition=player.transform.position;
-        rb.AddForce(movement * speed * Time.deltaTime);
+        //rb.AddForce(movement * speed * Time.deltaTime);
+        if(str=="w"||str=="s")
+        { 
+            var forwardDir = mainCamera.transform.forward;
+            Dir(str);
+            rb.AddForce(forwardDir * speed * Time.deltaTime);
+        }
+        if(str=="a"||str=="d")
+        { 
+        var rightDir = mainCamera.transform.right;
+        Dir(str);
+        rb.AddForce(rightDir*speed*Time.deltaTime);
+        }
+
         if (player.transform.position.y <= 0)
         {
             tmpPosition.y = 1.0f;
@@ -64,6 +85,48 @@ public class playercontroller : MonoBehaviour
         if(score>=5)
         {
             SceneManager.LoadScene("Clear");
+        }
+    }
+
+    private void Dir(string str)
+    {
+        if(Input.GetKeyDown(KeyCode.A)||Input.GetKeyDown(KeyCode.S))
+        {
+            if(speed>0)
+            {
+                speed*=-1;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.D))
+        {
+            if(speed<0)
+            {
+                speed*=-1;
+            }
+        }
+    }
+
+    private void Key()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            str = "w";
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            str="a";
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
+            str="s";
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            str = "d";
+        }
+        else
+        {
+            str="n";
         }
     }
 }

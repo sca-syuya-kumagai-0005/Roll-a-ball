@@ -23,12 +23,12 @@ public class cameracontroller : MonoBehaviour
     {
         transform.position = player.transform.position + offset;
         offset = transform.position - player.transform.position;
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetMouseButton(0))
         {
             roty-=0.4f;
             transform.Rotate(new Vector3(0, roty + offset.y,0 )*Time.deltaTime);
         }
-        else if(Input.GetKey(KeyCode.X))
+        else if(Input.GetMouseButton(1))
         {
             roty+=0.4f;
             transform.Rotate(new Vector3(0, roty + offset.y, 0) * Time.deltaTime);
