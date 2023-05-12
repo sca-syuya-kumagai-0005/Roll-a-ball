@@ -42,7 +42,7 @@ public class playercontroller : MonoBehaviour
         rb.AddForce(movement * speed * Time.deltaTime);
         if (player.transform.position.y <= 0)
         {
-            player.transform.position.y= 1.0f;
+            playerposition.y= 1.0f;
         }
         //var ‚ÍŒ^„˜_@‰E•Ó‚©‚çŒ^‚ðŽ©“®‚Å„‘ª‚µ‚Ä‚­‚ê‚é
 
