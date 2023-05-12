@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97461a897c6244841afa97133c03e9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 5541623579655214353, guid: b1c8f0dec639f46498b29e197a9a9f7a, type: 3}
   miner: {fileID: 6578545867131004639}

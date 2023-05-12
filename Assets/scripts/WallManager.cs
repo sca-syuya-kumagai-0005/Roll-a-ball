@@ -61,6 +61,7 @@ public class WallManager : MonoBehaviour
         GameObject start = GameObject.Find(ver1 + "-" + hor1);
         playerstart  =start.transform.position;
         Destroy(start);
+        
 
 
         //その位置をコンソールに表示

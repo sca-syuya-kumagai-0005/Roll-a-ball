@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Miner : MonoBehaviour
 {
-
+    [SerializeField]
+    GameObject obj;
     //MinerÇÃPrefabÇì¸ÇÍÇÈ
     public GameObject miner;
 
@@ -35,6 +36,8 @@ public class Miner : MonoBehaviour
         if (upObj != null)
         {
             //2Ç¬è„ÇÃÇ∆1Ç¬è„ÇÃÇè¡Ç∑
+            Instantiate(obj, new Vector3(upObj.transform.position.x, 1.0f, upObj.transform.position.z), Quaternion.identity);
+            Instantiate(obj, new Vector3(upObj2.transform.position.x, 1.0f, upObj2.transform.position.z), Quaternion.identity);
             Destroy(upObj);
             Destroy(upObj2);
 
@@ -57,9 +60,10 @@ public class Miner : MonoBehaviour
 
         if (downObj != null)
         {
+            Instantiate(obj, new Vector3(downObj.transform.position.x, 1.0f, downObj.transform.position.z), Quaternion.identity);
+            Instantiate(obj, new Vector3(downObj2.transform.position.x, 1.0f, downObj2.transform.position.z), Quaternion.identity);
             Destroy(downObj);
             Destroy(downObj2);
-
             GameObject minerObj = Instantiate(miner, Vector3.zero, Quaternion.identity);
             Miner minerScr = minerObj.GetComponent<Miner>();
             minerScr.DoMining(verDown, hor);
@@ -76,6 +80,8 @@ public class Miner : MonoBehaviour
 
         if (rightObj != null)
         {
+            Instantiate(obj, new Vector3(rightObj.transform.position.x, 1.0f, rightObj.transform.position.z), Quaternion.identity);
+            Instantiate(obj, new Vector3(rightObj2.transform.position.x, 1.0f, rightObj2.transform.position.z), Quaternion.identity);
             Destroy(rightObj);
             Destroy(rightObj2);
 
@@ -95,6 +101,7 @@ public class Miner : MonoBehaviour
 
         if (leftObj != null)
         {
+            Instantiate(obj, new Vector3(leftObj.transform.position.x, 1.0f, leftObj.transform.position.z), Quaternion.identity);
             Destroy(leftObj);
             Destroy(leftObj2);
 

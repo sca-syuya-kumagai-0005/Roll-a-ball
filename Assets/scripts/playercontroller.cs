@@ -82,10 +82,10 @@ public class playercontroller : MonoBehaviour
             other.gameObject.SetActive(false);
             score+=1;
         }
-        if(score>=5)
-        {
-            SceneManager.LoadScene("Clear");
-        }
+        //if(score>=5)
+        //{
+        //    SceneManager.LoadScene("Clear");
+        //}
     }
 
     private void Dir(string str)
